@@ -14,8 +14,10 @@ public class UserService
  public void insertUser(User user) {
   SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
   try{
-  UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-  userMapper.insertUser(user);
+//  UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+//  
+//  userMapper.insertUser(user);
+	  sqlSession.insert("Usermap.insertUser",user );
   sqlSession.commit();
   }
   catch (Exception e)
