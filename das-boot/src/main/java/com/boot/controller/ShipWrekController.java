@@ -24,7 +24,7 @@ public class ShipWrekController {
 	@RequestMapping(value ="shipwrecks/{id}", method = RequestMethod.GET)
 	public Shipwreck getwreck(@PathVariable Long id)
 	{
-		return ShipwreckStub.get(id);
+		return ShipwreckStub.get(id.intValue());
 	}
 	
 	@RequestMapping(value ="shipwrecks", method = RequestMethod.POST)
@@ -36,12 +36,12 @@ public class ShipWrekController {
 	@RequestMapping(value ="shipwrecks/{id}", method = RequestMethod.PUT)
 	public Shipwreck update(@PathVariable Long id , @RequestBody Shipwreck  wreck )
 	{
-		return ShipwreckStub.update(id, wreck);
+		return ShipwreckStub.update(id.intValue(), wreck);
 	}
 	@RequestMapping(value ="shipwrecks/{id}", method = RequestMethod.DELETE)
 	public Shipwreck getlist(@PathVariable Long id)
 	{
-		return ShipwreckStub.delete(id);
+		return ShipwreckStub.delete(id.intValue());
 	}
 	
 }

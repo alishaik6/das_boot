@@ -1,7 +1,7 @@
 package com.boot.model;
 
 public class Shipwreck {
-	Long id;
+	Integer id;
 	String name;
 	String description;
 	String condition;
@@ -12,7 +12,7 @@ public class Shipwreck {
 
 	public Shipwreck() { }
 
-	public Shipwreck(Long id, String name, String description, String condition, Integer depth, Double latitude, Double longitude, Integer yearDiscovered) {
+	public Shipwreck(Integer id, String name, String description, String condition, Integer depth, Double latitude, Double longitude, Integer yearDiscovered) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -23,11 +23,11 @@ public class Shipwreck {
 		this.yearDiscovered = yearDiscovered;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

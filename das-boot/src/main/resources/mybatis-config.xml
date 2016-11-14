@@ -4,6 +4,9 @@
   'http://mybatis.org/dtd/mybatis-3-config.dtd'>
 <configuration>
  <properties resource='jdbc.properties'/>
+ <settings>
+    <setting name="logImpl" value="LOG4J"/>
+  </settings>
  <typeAliases>
   <typeAlias type='com.boot.model.User' alias='User'></typeAlias>
  </typeAliases>
@@ -11,14 +14,15 @@
   <environment id='development'>
     <transactionManager type='JDBC'/>
     <dataSource type='POOLED'>    
-   <property name='driver' value='${jdbc.driverClassName}'/>
-   <property name='url' value='${jdbc.url}'/>
-   <property name='username' value='${jdbc.username}'/>
-   <property name='password' value='${jdbc.password}'/>
+   <property name='driver' value='com.mysql.jdbc.Driver'/>
+   <property name='url' value='jdbc:mysql://localhost:3306/dev_db'/>
+   <property name='username' value='root'/>
+   <property name='password' value='root'/>
     </dataSource>
   </environment>
   </environments>
   <mappers>
  <mapper resource='com/boot/mapper/UserMapper.xml'/>
+ <mapper resource='com/boot/mapper/ShipMapper.xml'/>
   </mappers>
 </configuration>

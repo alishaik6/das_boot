@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.boot.mapper.ShipMapper'>
+
+  <select id='getShipById' parameterType='int' resultType='ShipResult'>
+   
+   SELECT 
+  ID,
+  NAME,
+  DESC,
+  CONDITION,
+  DEPTH,
+  LATITUDE,
+  LONGITUDE,
+  YEARS from ship_wreck where ID = #{id}
+  </select>
+  
+  <!-- Instead of referencing Fully Qualified Class Names we can register Aliases in mybatis-config.xml and use Alias names. -->
+   <resultMap type='com.boot.model.Shipwreck' id='ShipResult'>
+    <id property='id' column='ID'/>
+    <result property='name' column='NAME'/>
+    <result property='description' column='DESC'/>
+    <result property='condition' column='CONDITION'/>
+    <result property='depth' column='DEPTH'/> 
+    <result property='latitude' column='LATITUDE'/> 
+    <result property='longitude' column='LONGITUDE'/> 
+    <result property='yearDiscovered' column='YEARS'/>    
+   </resultMap>
+
+  <select id='getAllShip' resultMap='ShipResult'>
+   SELECT * FROM ship_wreck
+  </select>
+
+  <insert id='insertShip' parameterType='com.boot.model.Shipwreck' useGeneratedKeys='true' keyProperty='id'>
+   
+  INSERT INTO  ship_wreck (ID , NAME,DESC,CONDITION,DEPTH,LATITUDE,LONGITUDE,YEARS)
+  VALUES (#{id},#{name},#{description},#{condition},#{depth},#{latitude},#{longitude},#{yearDiscovered})
+
+  </insert>
+
+  <update id='updateShip' parameterType='ShipResult'>
+    UPDATE ship_wreck 
+    SET
+  NAME =#{name}
+  DESC = #{description}
+  CONDITION= #{condition}
+  DEPTH= #{depth}
+  LATITUDE= #{latitude}
+  LONGITUDE= #{longitude}
+  YEARS= #{yearDiscovered}
+    WHERE ID = #{id}
+  </update>
+
+  <delete id='deleteShip' parameterType='int'>
+    DELETE FROM ship_wreck WHERE ID = #{id}
+  </delete>
+
+</mapper>
